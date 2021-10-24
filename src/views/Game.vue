@@ -6,7 +6,7 @@
 
     <Card class="card">
       <v-card-title>
-        <h3 class="ms-16">{{ scrambledword }}</h3>
+        <h3 class="ms-16 scrambledwords">{{ scrambledword }}</h3>
       </v-card-title>
 
       <v-card-text>
