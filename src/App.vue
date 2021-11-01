@@ -2,15 +2,18 @@
   <BasicApp />
 </template>
 
-<script>
-import BasicApp from './components/basicapp.vue'
+<script lang="ts">
+import BasicApp from "./components/basicapp.vue";
+import store from "./store";
+import Vue from "vue";
+import { set } from "vue/types/umd";
 
-  export default {
-    data: () => ({ 
-      
-      }),
-      components: {
-        BasicApp
-      }
-  }
+export default Vue.extend({
+  data() {
+    return {};
+  },
+  components: {
+    BasicApp,
+  },
+});
 </script>

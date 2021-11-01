@@ -39,6 +39,7 @@ export default Vue.extend({
         this.$store.commit("definingwordslevel");
         this.$router.replace("/game");
       }
+      localStorage.new_features_trigger = 1;
     },
   },
 });

@@ -105,10 +105,18 @@
         >
       </v-card-actions>
 
+      <!-- users figuring out hard words -->
       <v-alert type="success" v-if="ifprenom"
         >Good job! I see that you have passed the trick, this is not an english
         word, keep going!</v-alert
       >
+      <v-alert type="success" v-if="enteredword == 'background'"
+        >Excellent {{ $store.state.name }}!, I knew that you will figure it
+        out.</v-alert
+      >
+
+      <!-- Meaning of words -->
+      <a v-if="checkingifcorrect" :href="getmeaning">Find it's meaning </a>
     </Card>
 
     <v-alert
@@ -238,8 +246,15 @@ export default Vue.extend({
           this.enteredword = "";
         }
 
-        if (this.currword == "prenom") {
-          alert("This is a trick `:)");
+        // alerts for specific words
+        if (this.$store.state.words.length > 1) {
+          if (this.currword == "prenom") {
+            alert("This is a trick `:)");
+          } else if (this.currword == "background") {
+            alert(
+              "This is the largest word in this level, but I'm sure that you will figure it out"
+            );
+          }
         }
       }
     },
@@ -300,6 +315,9 @@ export default Vue.extend({
       } else {
         return false;
       }
+    },
+    getmeaning(): string {
+      return `https://www.google.com/search?q=what is the meaning of ${this.currword}`;
     },
   },
 });

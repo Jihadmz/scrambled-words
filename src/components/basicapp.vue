@@ -7,7 +7,10 @@
             Scramble Words
           </v-list-item-title>
           <v-list-item-subtitle>
-            V 1.0
+            V 2.0
+            <span @click="onclick()" v-if="new_features_trigger == 0"
+              ><router-link to="/new-features">New Features</router-link></span
+            >
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -62,7 +65,35 @@
 
 <script lang="ts">
 import Vue from "vue";
-export default Vue.extend({});
+export default Vue.extend({
+  data() {
+    return {
+      new_features_trigger: 0,
+    };
+  },
+
+  mounted() {
+    if (localStorage.new_features_trigger) {
+      this.new_features_trigger = localStorage.new_features_trigger;
+    }
+  },
+
+  watch: {
+    new_features_trigger(newvalue) {
+      localStorage.new_features_trigger = newvalue;
+    },
+  },
+
+  methods: {
+    onclick() {
+      this.resetting();
+      console.log("clicked");
+    },
+    resetting() {
+      this.new_features_trigger = 1;
+    },
+  },
+});
 </script>
 
 <style lang="scss" scoped>
